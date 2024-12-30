@@ -60,7 +60,7 @@ namespace RootMotion.FinalIK {
 
 		[HideInInspector] public float zeroAxisDisplayOffset; // Angular offset of the scene view display of the Hinge rotation limit
 		
-		private float lastAngle;
+		public float lastAngle;
         
 		/*
 		 * Apply the hinge rotation limit
