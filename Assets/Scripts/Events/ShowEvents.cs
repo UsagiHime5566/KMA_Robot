@@ -8,6 +8,7 @@ public static class ShowEvents
     public static event Action<float> OnSegmentTimeUpdate;
     public static event Action<int, int> OnSegmentIndexUpdate; // 當前索引, 總段落數
     public static event Action<string> OnSegmentFileNameUpdate;
+    public static event Action<int> OnAnimationTrigger;
     
     public static void TriggerShowSegmentStart(string fileName)
     {
@@ -27,5 +28,10 @@ public static class ShowEvents
     public static void TriggerSegmentFileNameUpdate(string fileName)
     {
         OnSegmentFileNameUpdate?.Invoke(fileName);
+    }
+
+    public static void TriggerAnimationUpdate(int triggerValue)
+    {
+        OnAnimationTrigger?.Invoke(triggerValue);
     }
 } 

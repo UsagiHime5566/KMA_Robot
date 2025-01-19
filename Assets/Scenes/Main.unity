@@ -1343,6 +1343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segmentDuration: 150
+  animatorA: {fileID: 1476601414}
+  animatorB: {fileID: 1910633969}
   segments:
   - loadFileName: 1
   - loadFileName: 2

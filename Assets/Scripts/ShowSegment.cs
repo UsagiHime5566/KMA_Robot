@@ -5,6 +5,8 @@ public class ShowSegment
 {
     public string loadFileName;
     private int segmentIndex;
+    private float lastTriggerTime = 0f;
+    private const float TRIGGER_INTERVAL = 30f;
     
 
     public ShowSegment(int index, string _fileName)
@@ -16,13 +18,22 @@ public class ShowSegment
     public void StartSegment()
     {
         Debug.Log($"開始第 {segmentIndex + 1} 個橋段");
-        // 使用事件系統替代直接呼叫
+        lastTriggerTime = 0f;
         ShowEvents.TriggerShowSegmentStart(loadFileName);
     }
 
     public void UpdateSegment(float currentTime)
     {
-        // 在這裡添加橋段進行中的更新邏輯
+        // 檢查是否經過30秒
+        if (currentTime - lastTriggerTime >= TRIGGER_INTERVAL)
+        {
+            // 生成隨機觸發值 (0-10)
+            int randomTrigger = Random.Range(0, 11);
+            // 發送動畫觸發事件
+            ShowEvents.TriggerAnimationUpdate(randomTrigger);
+            // 更新最後觸發時間
+            lastTriggerTime = currentTime;
+        }
     }
 
     public void EndSegment()

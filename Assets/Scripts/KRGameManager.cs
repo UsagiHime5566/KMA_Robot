@@ -10,7 +10,6 @@ public class KRGameManager : HimeLib.SingletonMono<KRGameManager>
     [Header("Managers")]
     public UIManager uiManager;
 
-    public string testFileName = "1";
 
     private void OnEnable()
     {
@@ -25,11 +24,6 @@ public class KRGameManager : HimeLib.SingletonMono<KRGameManager>
     void Start()
     {
         uiManager.CanvasTurn(1);
-    }
-
-    [Button]
-    public void TestLoadSingleFileAndShow(){
-        LoadSingleFileAndShow(testFileName);
     }
 
     public void LoadSingleFileAndShow(string _fileName){
