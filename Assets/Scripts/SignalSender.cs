@@ -25,10 +25,13 @@ public class SignalSender : MonoBehaviour
     }
 
     void Awake()
-    {
-        resourceManager.OnFileLoaded += OnFileLoaded;
-        robotValues1.OnSendSignal += SendRobotSignal;
-        robotValues2.OnSendSignal += SendRobotSignal;
+    {   
+        if (KRGameManager.instance.useInternet)
+        {
+            resourceManager.OnFileLoaded += OnFileLoaded;
+            robotValues1.OnSendSignal += SendRobotSignal;
+            robotValues2.OnSendSignal += SendRobotSignal;
+        }
     }
 
         void OnFileLoaded(FileData fileData){

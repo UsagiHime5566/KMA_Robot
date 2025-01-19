@@ -15,9 +15,54 @@ public class UIManager : MonoBehaviour
     public List<Button> listDirButton;          //共6個輸入處
     public List<Image> listOutputImage;         //共5個輸出圖片
     public Button BTN_Update;
+    [SerializeField] private Text timeText;
+    [SerializeField] private Text segmentIndexText;
+    [SerializeField] private Text fileNameText;
+
+
+    [Header("Materials")]
+    public Material mat_ScreenA;
+    public Material mat_ScreenB;
+    public Material mat_ScreenC;
+    public Material mat_ScreenD;
+    public Material mat_ScreenE;
 
     [Header("Component")]
     public ResourceManager resourceManager;
+
+    
+
+    private void OnEnable()
+    {
+        ShowEvents.OnSegmentTimeUpdate += UpdateTimeUI;
+        ShowEvents.OnSegmentIndexUpdate += UpdateSegmentIndexUI;
+        ShowEvents.OnSegmentFileNameUpdate += UpdateFileNameUI;
+    }
+
+    private void OnDisable()
+    {
+        ShowEvents.OnSegmentTimeUpdate -= UpdateTimeUI;
+        ShowEvents.OnSegmentIndexUpdate -= UpdateSegmentIndexUI;
+        ShowEvents.OnSegmentFileNameUpdate -= UpdateFileNameUI;
+    }
+
+    private void UpdateTimeUI(float currentTime)
+    {
+        if (timeText != null)
+            timeText.text = $"時間: {currentTime:F1} 秒";
+    }
+
+    private void UpdateSegmentIndexUI(int currentIndex, int totalSegments)
+    {
+        if (segmentIndexText != null)
+            segmentIndexText.text = $"橋段: {currentIndex + 1}/{totalSegments}";
+    }
+
+    private void UpdateFileNameUI(string fileName)
+    {
+        if (fileNameText != null)
+            fileNameText.text = $"檔案: {fileName}";
+    }
 
     void Start()
     {
@@ -55,11 +100,19 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void LoadShow(string _fileName){
+        INP_FileName.text = _fileName;
+        resourceManager.LoalAll(listOutputImage);
+        mat_ScreenA.SetTexture("_BaseMap", listOutputImage[0].sprite.texture);
+        mat_ScreenB.SetTexture("_BaseMap", listOutputImage[1].sprite.texture);
+        mat_ScreenC.SetTexture("_BaseMap", listOutputImage[2].sprite.texture);
+        mat_ScreenD.SetTexture("_BaseMap", listOutputImage[3].sprite.texture);
+        mat_ScreenE.SetTexture("_BaseMap", listOutputImage[4].sprite.texture);
+    }
+
     void OnChangeFileName(string _fileName){
         SystemConfig.Instance.SaveData("FileName", _fileName);
         resourceManager.FileName = _fileName;
-
-        resourceManager.LoalAll(listOutputImage);
     }
 
     void OnChangeImageExtension(string _imageExtension){
@@ -92,8 +145,14 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void CanvasTurn(){
-        CG_System.blocksRaycasts = !CG_System.blocksRaycasts;
-        CG_System.alpha = CG_System.alpha == 1 ? 0 : 1;
+    public void CanvasTurn(int index){
+        if(index == 0){
+            CG_System.blocksRaycasts = false;
+            CG_System.alpha = 0;
+        }
+        if(index == 1){
+            CG_System.blocksRaycasts = true;
+            CG_System.alpha = 1;
+        }
     }
 }
