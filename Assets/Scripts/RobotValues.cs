@@ -8,7 +8,6 @@ public class RobotValues : MonoBehaviour
     public bool enableSendSignal;
     public int index;
     public float sendSignalDelay = 0.25f;
-    public float prepareSendSignalDelay = 5f;
     public List<RotationLimitHinge> listRotationLimitHinge;
     public List<int> listAxis;
 
@@ -33,7 +32,10 @@ public class RobotValues : MonoBehaviour
     }
 
     IEnumerator SendSignal(){
-        yield return new WaitForSeconds(prepareSendSignalDelay);
+        yield return new WaitForSeconds(KRGameManager.instance.autoStartDelay);
+        if(!KRGameManager.instance.autoStart){
+            yield break;
+        }
         while (true)
         {
             yield return new WaitForSeconds(sendSignalDelay);

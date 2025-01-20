@@ -14,6 +14,7 @@ public class ShowManager : MonoBehaviour
     public Animator animatorB;
     public List<ShowSegment> segments = new List<ShowSegment>();
 
+
     void Start()
     {
         if(!InitializeSegments()){
@@ -24,8 +25,10 @@ public class ShowManager : MonoBehaviour
 
     private IEnumerator DelayedStart()
     {
-        yield return new WaitForSeconds(5f);
-        StartShow();
+        yield return new WaitForSeconds(KRGameManager.instance.autoStartDelay);
+        if(KRGameManager.instance.autoStart){
+            StartShow();
+        }
     }
 
     void Update()

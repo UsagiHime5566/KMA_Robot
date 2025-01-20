@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class SignalSender : MonoBehaviour
 {
@@ -63,6 +64,7 @@ public class SignalSender : MonoBehaviour
             {
                 Debug.LogError($"上傳失敗! 錯誤: {request.error}");
                 Debug.LogError($"錯誤信息: {request.downloadHandler.text}");
+                KRGameManager.instance.uiManager.AddLog($"[Paper] 上傳失敗! 錯誤: {request.error}");
             }
             else
             {
@@ -92,6 +94,7 @@ public class SignalSender : MonoBehaviour
             if (request.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError("Failed to send request: " + request.error);
+                KRGameManager.instance.uiManager.AddLog($"[Robot] Failed to send request: {request.error}");
             }
             else
             {

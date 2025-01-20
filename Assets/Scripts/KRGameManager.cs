@@ -9,6 +9,8 @@ public class KRGameManager : HimeLib.SingletonMono<KRGameManager>
 
     [Header("Managers")]
     public UIManager uiManager;
+    public bool autoStart = false;
+    public float autoStartDelay = 5f;
 
 
     private void OnEnable()

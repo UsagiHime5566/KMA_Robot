@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text timeText;
     [SerializeField] private Text segmentIndexText;
     [SerializeField] private Text fileNameText;
+    public Text TXT_DebugLog;
+    public Toggle TOG_AutoStart;
 
 
     [Header("Materials")]
@@ -30,7 +32,10 @@ public class UIManager : MonoBehaviour
     [Header("Component")]
     public ResourceManager resourceManager;
 
-    
+    [Header("Debug")]
+    public int maxLog = 3;
+
+    Queue<string> logQueue = new Queue<string>();
 
     private void OnEnable()
     {
@@ -93,6 +98,13 @@ public class UIManager : MonoBehaviour
             resourceManager.LoalAll(listOutputImage);
         });
 
+        TOG_AutoStart.onValueChanged.AddListener(x => {
+            SystemConfig.Instance.SaveData("AutoStart", x);
+            KRGameManager.instance.autoStart = x;
+        });
+        TOG_AutoStart.isOn = SystemConfig.Instance.GetData<bool>("AutoStart", true);
+
+
         for (int i = 0; i < listDirButton.Count; i++)
         {
             int index = i;
@@ -154,5 +166,13 @@ public class UIManager : MonoBehaviour
             CG_System.blocksRaycasts = true;
             CG_System.alpha = 1;
         }
+    }
+
+    public void AddLog(string log){
+        logQueue.Enqueue(log);
+        if(logQueue.Count > maxLog){
+            logQueue.Dequeue();
+        }
+        TXT_DebugLog.text = string.Join("\n", logQueue);
     }
 }
