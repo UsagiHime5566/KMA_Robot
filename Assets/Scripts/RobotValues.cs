@@ -33,8 +33,8 @@ public class RobotValues : MonoBehaviour
 
     IEnumerator SendSignal(){
         yield return new WaitForSeconds(KRGameManager.instance.autoStartDelay);
-        if(!KRGameManager.instance.autoStart){
-            yield break;
+        if(KRGameManager.instance.autoStart){
+            enableSendSignal = true;
         }
         while (true)
         {

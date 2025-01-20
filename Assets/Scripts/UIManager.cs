@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text fileNameText;
     public Text TXT_DebugLog;
     public Toggle TOG_AutoStart;
+    public Button BTN_Manual;
 
 
     [Header("Materials")]
@@ -31,6 +32,10 @@ public class UIManager : MonoBehaviour
 
     [Header("Component")]
     public ResourceManager resourceManager;
+    public Animator animatorA;
+    public Animator animatorB;
+    public RobotValues robotValuesA;
+    public RobotValues robotValuesB;
 
     [Header("Debug")]
     public int maxLog = 3;
@@ -103,6 +108,13 @@ public class UIManager : MonoBehaviour
             KRGameManager.instance.autoStart = x;
         });
         TOG_AutoStart.isOn = SystemConfig.Instance.GetData<bool>("AutoStart", true);
+
+        BTN_Manual.onClick.AddListener(() => {
+            animatorA.enabled = false;
+            animatorB.enabled = false;
+            robotValuesA.enableSendSignal = true;
+            robotValuesB.enableSendSignal = true;
+        });
 
 
         for (int i = 0; i < listDirButton.Count; i++)
