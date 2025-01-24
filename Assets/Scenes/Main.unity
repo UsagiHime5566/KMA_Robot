@@ -3793,8 +3793,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 769369989}
-  - component: {fileID: 769369988}
   - component: {fileID: 769369990}
+  - component: {fileID: 769369988}
   m_Layer: 0
   m_Name: RobotValues
   m_TagString: Untagged
@@ -3815,8 +3815,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSendSignal: 0
-  index: 0
-  sendSignalDelay: 0.25
+  index: 1
+  sendSignalDelay: 1
   listRotationLimitHinge:
   - {fileID: 2077479324}
   - {fileID: 2128987973}
@@ -3853,8 +3853,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSendSignal: 0
-  index: 1
-  sendSignalDelay: 0.25
+  index: 0
+  sendSignalDelay: 1
   listRotationLimitHinge:
   - {fileID: 479747709}
   - {fileID: 610927318}
@@ -5574,7 +5574,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 1041965137}
-  m_PlaneDistance: 10
+  m_PlaneDistance: 20
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -7339,7 +7339,7 @@ Transform:
   - {fileID: 438715067}
   - {fileID: 1739468482}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &1476601414
 Animator:
@@ -9550,7 +9550,7 @@ Transform:
   - {fileID: 690403873}
   - {fileID: 729135278}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!95 &1910633969
 Animator:
