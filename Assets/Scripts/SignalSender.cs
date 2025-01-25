@@ -35,10 +35,13 @@ public class SignalSender : MonoBehaviour
         }
     }
 
-        void OnFileLoaded(FileData fileData){
-        if (fileData.extension == ".jpg"){
-            SendPaperSignal(fileData.data,  $"{fileData.fileName}.{fileData.extension}", fileData.index + 1);   //紙張ID從1開始
-        }
+    void OnFileLoaded(FileData fileData){
+        SendPaperIntSignal(fileData.fileName, fileData.index + 1);
+
+        //舊版是上傳紙張檔案
+        // if (fileData.extension == ".jpg"){
+        //     SendPaperSignal(fileData.data,  $"{fileData.fileName}.{fileData.extension}", fileData.index + 1);   //紙張ID從1開始
+        // }
     }
 
     void SendPaperSignal(byte[] imageData, string fileName, int paperId)
@@ -69,6 +72,37 @@ public class SignalSender : MonoBehaviour
             else
             {
                 Debug.Log($"上傳成功!回應內容: {request.downloadHandler.text}");
+            }
+        }
+    }
+
+    public void SendPaperIntSignal(string signal, int paperId)
+    {
+        string url = "https://" + BaseUrl + string.Format(PaperAPI, paperId);
+        Debug.Log(url + $" ({signal})");
+        StartCoroutine(SendIntRequest(url, signal));
+    }
+
+    private IEnumerator SendIntRequest(string url, string signal)
+    {
+        using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
+        {
+            // 直接將整數轉換為字串後轉為位元組
+            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(signal);
+            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "text/plain");  // 改為純文字格式
+            request.SetRequestHeader("Authorization", "Bearer da31b188fa2949d2b507d520b60e0d14");
+            
+            yield return request.SendWebRequest();
+            
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError($"發送請求失敗 ({signal}): " + request.error);
+            }
+            else
+            {
+                Debug.Log($"請求發送成功 ({signal}): " + request.downloadHandler.text);
             }
         }
     }

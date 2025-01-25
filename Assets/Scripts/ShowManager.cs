@@ -117,7 +117,7 @@ public class ShowManager : MonoBehaviour
 
     private void HandleAnimationTrigger(int triggerValue)
     {
-        Debug.Log($"TriggerValue: {triggerValue}");
+        Debug.Log($"Trigger Animation Value: {triggerValue}");
         if (animatorA != null)
         {
             animatorA.SetTrigger($"{triggerValue}");

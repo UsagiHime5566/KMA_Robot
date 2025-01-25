@@ -33,7 +33,7 @@ public class ShowSegment
             ShowEvents.TriggerAnimationUpdate(randomTrigger);
             // 更新最後觸發時間
             lastTriggerTime = currentTime;
-            Debug.Log($"Segment {segmentIndex + 1}: Triggered at {currentTime:F1}s");
+            Debug.Log($"章節 {segmentIndex + 1}: Triggered at {currentTime:F1}s");
         }
     }
 
