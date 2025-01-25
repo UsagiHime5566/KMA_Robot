@@ -40,7 +40,7 @@ public class RobotValues : MonoBehaviour
         {
             yield return new WaitForSeconds(sendSignalDelay);
             RobotAngles angles = new RobotAngles(); 
-            angles.SetAngles(listAxis[0], listAxis[1], listAxis[2], listAxis[3], listAxis[4], listAxis[5]);
+            angles.SetAngles(-listAxis[0], listAxis[1], listAxis[2], listAxis[3], listAxis[4], listAxis[5]);
             if (enableSendSignal)   
             {
                 OnSendSignal?.Invoke(angles, index + 1);    //API從1開始

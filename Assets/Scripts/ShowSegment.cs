@@ -5,8 +5,8 @@ public class ShowSegment
 {
     public string loadFileName;
     private int segmentIndex;
-    private float lastTriggerTime = -30f;
-    private const float TRIGGER_INTERVAL = 30f;
+    private float lastTriggerTime = -60f;
+    private const float TRIGGER_INTERVAL = 60f;
     
 
     public ShowSegment(int index, string _fileName)
@@ -18,7 +18,7 @@ public class ShowSegment
     public void StartSegment()
     {
         Debug.Log($"開始第 {segmentIndex + 1} 個橋段");
-        lastTriggerTime = -30f;
+        lastTriggerTime = -60f;
         ShowEvents.TriggerShowSegmentStart(loadFileName);
     }
 
