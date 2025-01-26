@@ -9,6 +9,8 @@ public class KRGameManager : HimeLib.SingletonMono<KRGameManager>
 
     [Header("Managers")]
     public UIManager uiManager;
+    public AudioManager audioManager;
+    public AnimManager animManager;
     public bool autoStart = false;
     public float autoStartDelay = 5f;
 
@@ -29,7 +31,7 @@ public class KRGameManager : HimeLib.SingletonMono<KRGameManager>
     }
 
     public void LoadSingleFileAndShow(string _fileName){
-        uiManager.LoadShow(_fileName);
+        uiManager.LoadSequenceShow(_fileName);
     }
 
     void Update(){

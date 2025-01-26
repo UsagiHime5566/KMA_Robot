@@ -32,10 +32,6 @@ public class UIManager : MonoBehaviour
 
     [Header("Component")]
     public ResourceManager resourceManager;
-    public Animator animatorA;
-    public Animator animatorB;
-    public RobotValues robotValuesA;
-    public RobotValues robotValuesB;
 
     [Header("Debug")]
     public int maxLog = 3;
@@ -110,10 +106,7 @@ public class UIManager : MonoBehaviour
         TOG_AutoStart.isOn = SystemConfig.Instance.GetData<bool>("AutoStart", true);
 
         BTN_Manual.onClick.AddListener(() => {
-            animatorA.enabled = false;
-            animatorB.enabled = false;
-            robotValuesA.enableSendSignal = true;
-            robotValuesB.enableSendSignal = true;
+            KRGameManager.instance.animManager.BecomeManual();
         });
 
 
@@ -124,6 +117,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void LoadSequenceShow(string _fileName){
+        INP_FileName.text = _fileName;
+        resourceManager.LoadSound(_fileName);
+        //執行完會有 Event Callback
+    }
+
+    //舊版的一次全部讀取, 使用LoadAll
     public void LoadShow(string _fileName){
         INP_FileName.text = _fileName;
         resourceManager.LoalAll(listOutputImage);

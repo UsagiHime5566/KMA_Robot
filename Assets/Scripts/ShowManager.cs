@@ -10,8 +10,6 @@ public class ShowManager : MonoBehaviour
     private float currentSegmentTimer = 0f;
     private bool isShowRunning = false;
 
-    public Animator animatorA;
-    public Animator animatorB;
     public List<ShowSegment> segments = new List<ShowSegment>();
 
 
@@ -103,28 +101,5 @@ public class ShowManager : MonoBehaviour
     {
         isShowRunning = false;
         Debug.Log("演出結束！");
-    }
-
-    void OnEnable()
-    {
-        ShowEvents.OnAnimationTrigger += HandleAnimationTrigger;
-    }
-
-    void OnDisable()
-    {
-        ShowEvents.OnAnimationTrigger -= HandleAnimationTrigger;
-    }
-
-    private void HandleAnimationTrigger(int triggerValue)
-    {
-        Debug.Log($"Trigger Animation Value: {triggerValue}");
-        if (animatorA != null)
-        {
-            animatorA.SetTrigger($"{triggerValue}");
-        }
-        if (animatorB != null)
-        {
-            animatorB.SetTrigger($"{triggerValue}");
-        }
     }
 } 

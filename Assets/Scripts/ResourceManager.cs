@@ -55,7 +55,7 @@ public class ResourceManager : MonoBehaviour
         LoadSound(FileName);
     }
 
-    void LoadImages(string _fileName, List<Image> listOutputImage){
+    public void LoadImages(string _fileName, List<Image> listOutputImage){
         for (int i = 0; i < listOutputImage.Count; i++)
         {
             tempFileData = new FileData();
@@ -113,7 +113,7 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-    private async void LoadSound(string _fileName){
+    public async void LoadSound(string _fileName){
         string dirPath = ListDirPath.Last();        //共6個輸入處, 第6個是聲音
         if (dirPath == "Null")
         {
