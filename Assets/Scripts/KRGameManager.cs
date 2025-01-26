@@ -11,27 +11,15 @@ public class KRGameManager : HimeLib.SingletonMono<KRGameManager>
     public UIManager uiManager;
     public AudioManager audioManager;
     public AnimManager animManager;
+    public ShowManager showManager;
+  
+
     public bool autoStart = false;
     public float autoStartDelay = 5f;
-
-
-    private void OnEnable()
-    {
-        ShowEvents.OnShowSegmentStart += LoadSingleFileAndShow;
-    }
-
-    private void OnDisable()
-    {
-        ShowEvents.OnShowSegmentStart -= LoadSingleFileAndShow;
-    }
 
     void Start()
     {
         uiManager.CanvasTurn(1);
-    }
-
-    public void LoadSingleFileAndShow(string _fileName){
-        uiManager.LoadSequenceShow(_fileName);
     }
 
     void Update(){

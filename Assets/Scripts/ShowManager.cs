@@ -1,14 +1,24 @@
 using UnityEngine;
 using System.Collections.Generic;
 using EasyButtons;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ShowManager : MonoBehaviour
 {
-    public float segmentDuration = 150f; // 每個橋段的持續時間
     private int currentSegmentIndex = 0;  // 當前橋段索引
     private float currentSegmentTimer = 0f;
     private bool isShowRunning = false;
+
+    public float atleastTotalTime = 150f;
+    public float waitToNextTime = 40f;
+    public float timeWhenSoundEnd = -1;
+
+
+    [Header("Debug UI")]
+    [SerializeField] Text timeText;
+    [SerializeField] Text segmentIndexText;
+    [SerializeField] Text fileNameText;
 
     public List<ShowSegment> segments = new List<ShowSegment>();
 
@@ -18,6 +28,9 @@ public class ShowManager : MonoBehaviour
         if(!InitializeSegments()){
             return;
         }
+
+        KRGameManager.instance.audioManager.OnSoundEnd += OnSoundEnd;
+
         StartCoroutine(DelayedStart());
     }
 
@@ -36,20 +49,21 @@ public class ShowManager : MonoBehaviour
         currentSegmentTimer += Time.deltaTime;
         
         // 發送時間更新事件
-        ShowEvents.TriggerSegmentTimeUpdate(currentSegmentTimer);
-
-        if (currentSegmentTimer >= segmentDuration)
-        {
-            NextSegment();
-        }
+        if (timeText != null)
+            timeText.text = $"時間: {currentSegmentTimer:F1} 秒";
 
         if (segments[currentSegmentIndex] != null)
         {
             segments[currentSegmentIndex].UpdateSegment(currentSegmentTimer);
         }
+
+        if(currentSegmentTimer > atleastTotalTime &&
+            currentSegmentTimer - timeWhenSoundEnd > waitToNextTime){
+            NextSegment();
+        }
     }
 
-    private bool InitializeSegments()
+    bool InitializeSegments()
     {
         if(segments.Count < 12){
             Debug.LogError("Segments count is less than 12");
@@ -70,20 +84,21 @@ public class ShowManager : MonoBehaviour
         isShowRunning = true;
         currentSegmentIndex = 0;
         currentSegmentTimer = 0f;
+        timeWhenSoundEnd = 9999;
         UpdateUIInfo();
         segments[currentSegmentIndex].StartSegment();
     }
 
     private void NextSegment()
     {
-        segments[currentSegmentIndex].EndSegment();
+        segments[currentSegmentIndex].EndSegment(currentSegmentTimer);
         currentSegmentIndex++;
         currentSegmentTimer = 0f;
+        timeWhenSoundEnd = 9999;
 
         if (currentSegmentIndex >= segments.Count)
         {
-            EndShow();
-            return;
+            currentSegmentIndex = 0;
         }
 
         UpdateUIInfo();
@@ -93,13 +108,24 @@ public class ShowManager : MonoBehaviour
     // 新增用於更新 UI 資訊的方法
     private void UpdateUIInfo()
     {
-        ShowEvents.TriggerSegmentIndexUpdate(currentSegmentIndex, segments.Count);
-        ShowEvents.TriggerSegmentFileNameUpdate(segments[currentSegmentIndex].loadFileName);
+        if (segmentIndexText != null)
+            segmentIndexText.text = $"橋段: {currentSegmentIndex + 1}/{segments.Count}";
+
+        if (fileNameText != null)
+            fileNameText.text = $"檔案: {segments[currentSegmentIndex].loadFileName}";
     }
 
     private void EndShow()
     {
         isShowRunning = false;
         Debug.Log("演出結束！");
+    }
+
+    private void OnSoundEnd()
+    {
+        KRGameManager.instance.animManager.animRobot = true;
+        KRGameManager.instance.uiManager.LoadSequenceImage();
+
+        timeWhenSoundEnd = currentSegmentTimer;
     }
 } 

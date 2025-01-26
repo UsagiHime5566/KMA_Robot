@@ -5,9 +5,6 @@ public class ShowSegment
 {
     public string loadFileName;
     private int segmentIndex;
-    private float lastTriggerTime = -60f;
-    private const float TRIGGER_INTERVAL = 60f;
-    
 
     public ShowSegment(int index, string _fileName)
     {
@@ -18,24 +15,18 @@ public class ShowSegment
     public void StartSegment()
     {
         Debug.Log($"開始第 {segmentIndex + 1} 個橋段");
-        lastTriggerTime = -TRIGGER_INTERVAL;
-        ShowEvents.TriggerShowSegmentStart(loadFileName);
+
+        KRGameManager.instance.animManager.animRobot = false;
+        KRGameManager.instance.uiManager.LoadSequenceShow(loadFileName);
     }
 
     public void UpdateSegment(float currentTime)
     {
-        // 檢查是否經過60秒
-        if (currentTime - lastTriggerTime >= TRIGGER_INTERVAL)
-        {
-            // 更新最後觸發時間
-            lastTriggerTime = currentTime;
-            Debug.Log($"章節 {segmentIndex + 1}: Triggered at {currentTime:F1}s");
-        }
+        
     }
 
-    public void EndSegment()
+    public void EndSegment(float currentTime)
     {
-        Debug.Log($"結束第 {segmentIndex + 1} 個橋段");
-        // 在這裡添加橋段結束時的清理工作
+        Debug.Log($"結束第 {segmentIndex + 1} 個橋段於 {currentTime} 秒");
     }
 } 

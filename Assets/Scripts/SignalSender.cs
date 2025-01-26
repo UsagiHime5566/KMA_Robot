@@ -99,6 +99,7 @@ public class SignalSender : MonoBehaviour
             if (request.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError($"發送請求失敗 ({signal}): " + request.error);
+                KRGameManager.instance.uiManager.AddLog($"[Paper] 發送請求失敗! 錯誤: {request.error}");
             }
             else
             {

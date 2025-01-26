@@ -1586,7 +1586,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac89e3ad7effb845b56124c4797ecfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segmentDuration: 150
+  atleastTotalTime: 150
+  waitToNextTime: 40
+  timeText: {fileID: 1526511371}
+  segmentIndexText: {fileID: 1838779647}
+  fileNameText: {fileID: 1385804768}
   segments:
   - loadFileName: 1
   - loadFileName: 2
@@ -2863,6 +2867,7 @@ MonoBehaviour:
   uiManager: {fileID: 1810029241}
   audioManager: {fileID: 853796834}
   animManager: {fileID: 1682453781}
+  showManager: {fileID: 398149516}
   autoStart: 0
   autoStartDelay: 5
 --- !u!1 &610927316
@@ -9268,9 +9273,6 @@ MonoBehaviour:
   - {fileID: 449849770}
   - {fileID: 375578565}
   BTN_Update: {fileID: 1230275029}
-  timeText: {fileID: 1526511371}
-  segmentIndexText: {fileID: 1838779647}
-  fileNameText: {fileID: 1385804768}
   TXT_DebugLog: {fileID: 1234182886}
   TOG_AutoStart: {fileID: 198075855}
   BTN_Manual: {fileID: 1630837857}

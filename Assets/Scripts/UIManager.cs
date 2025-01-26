@@ -15,9 +15,6 @@ public class UIManager : MonoBehaviour
     public List<Button> listDirButton;          //共6個輸入處
     public List<Image> listOutputImage;         //共5個輸出圖片
     public Button BTN_Update;
-    [SerializeField] private Text timeText;
-    [SerializeField] private Text segmentIndexText;
-    [SerializeField] private Text fileNameText;
     public Text TXT_DebugLog;
     public Toggle TOG_AutoStart;
     public Button BTN_Manual;
@@ -37,38 +34,6 @@ public class UIManager : MonoBehaviour
     public int maxLog = 3;
 
     Queue<string> logQueue = new Queue<string>();
-
-    private void OnEnable()
-    {
-        ShowEvents.OnSegmentTimeUpdate += UpdateTimeUI;
-        ShowEvents.OnSegmentIndexUpdate += UpdateSegmentIndexUI;
-        ShowEvents.OnSegmentFileNameUpdate += UpdateFileNameUI;
-    }
-
-    private void OnDisable()
-    {
-        ShowEvents.OnSegmentTimeUpdate -= UpdateTimeUI;
-        ShowEvents.OnSegmentIndexUpdate -= UpdateSegmentIndexUI;
-        ShowEvents.OnSegmentFileNameUpdate -= UpdateFileNameUI;
-    }
-
-    private void UpdateTimeUI(float currentTime)
-    {
-        if (timeText != null)
-            timeText.text = $"時間: {currentTime:F1} 秒";
-    }
-
-    private void UpdateSegmentIndexUI(int currentIndex, int totalSegments)
-    {
-        if (segmentIndexText != null)
-            segmentIndexText.text = $"橋段: {currentIndex + 1}/{totalSegments}";
-    }
-
-    private void UpdateFileNameUI(string fileName)
-    {
-        if (fileNameText != null)
-            fileNameText.text = $"檔案: {fileName}";
-    }
 
     void Start()
     {
@@ -118,9 +83,14 @@ public class UIManager : MonoBehaviour
     }
 
     public void LoadSequenceShow(string _fileName){
+        resourceManager.ClearPreviousResources();
         INP_FileName.text = _fileName;
         resourceManager.LoadSound(_fileName);
-        //執行完會有 Event Callback
+        //執行完會有 Event Callback 在 KRGameManager 中
+    }
+
+    public void LoadSequenceImage(){
+        resourceManager.LoadImages(listOutputImage);
     }
 
     //舊版的一次全部讀取, 使用LoadAll

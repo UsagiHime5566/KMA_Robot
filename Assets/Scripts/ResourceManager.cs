@@ -55,6 +55,10 @@ public class ResourceManager : MonoBehaviour
         LoadSound(FileName);
     }
 
+    public void LoadImages(List<Image> listOutputImage){
+        LoadImages(FileName, listOutputImage);
+    }
+
     public void LoadImages(string _fileName, List<Image> listOutputImage){
         for (int i = 0; i < listOutputImage.Count; i++)
         {
@@ -168,7 +172,7 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-    private void ClearPreviousResources()
+    public void ClearPreviousResources()
     {
         foreach (var texture in createdTexture)
         {
