@@ -83,14 +83,22 @@ public class UIManager : MonoBehaviour
     }
 
     public void LoadSequenceShow(string _fileName){
-        resourceManager.ClearPreviousResources();
         INP_FileName.text = _fileName;
         resourceManager.LoadSound(_fileName);
         //執行完會有 Event Callback 在 KRGameManager 中
     }
 
     public void LoadSequenceImage(){
+        resourceManager.ClearPreviousResources();
         resourceManager.LoadImages(listOutputImage);
+        if(listOutputImage[0].sprite && listOutputImage[1].sprite && listOutputImage[2].sprite && listOutputImage[3].sprite && listOutputImage[4].sprite)
+        {
+            mat_ScreenA.SetTexture("_BaseMap", listOutputImage[0].sprite.texture);
+            mat_ScreenB.SetTexture("_BaseMap", listOutputImage[1].sprite.texture);
+            mat_ScreenC.SetTexture("_BaseMap", listOutputImage[2].sprite.texture);
+            mat_ScreenD.SetTexture("_BaseMap", listOutputImage[3].sprite.texture);
+            mat_ScreenE.SetTexture("_BaseMap", listOutputImage[4].sprite.texture);
+        }
     }
 
     //舊版的一次全部讀取, 使用LoadAll
