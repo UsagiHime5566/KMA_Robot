@@ -1601,9 +1601,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSegmentIndex: 0
   currentSegmentTimer: 0
-  atleastTotalTime: 150
-  waitToNextTime: 40
+  atleastTotalTime: 120
+  waitToNextTime: 30
   timeWhenSoundEnd: -1
+  waitTimeForRobotReset: 30
+  waitTimeParams: 1.3
   INP_Segment: {fileID: 1683706901}
   timeText: {fileID: 1526511371}
   segmentIndexText: {fileID: 1838779647}
@@ -9195,7 +9197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 44.099976, y: 272.37}
+  m_AnchoredPosition: {x: 44.100098, y: 272.37}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1713258806
