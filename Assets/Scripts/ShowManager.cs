@@ -16,6 +16,7 @@ public class ShowManager : MonoBehaviour
     public float waitToNextTime = 40f;
     public float timeWhenSoundEnd = -1;
     public float waitTimeForRobotReset = 40;
+    public float waitTimeParams = 1.5f;
 
     [Header("Control UI")]
     public InputField INP_Segment;
@@ -78,6 +79,7 @@ public class ShowManager : MonoBehaviour
 
         if(currentSegmentTimer > atleastTotalTime &&
             currentSegmentTimer - timeWhenSoundEnd > waitToNextTime){
+            waitTimeForRobotReset = (currentSegmentTimer - timeWhenSoundEnd) * waitTimeParams;
             NextSegment();
         }
     }
