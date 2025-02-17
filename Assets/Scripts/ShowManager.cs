@@ -6,14 +6,18 @@ using System.Collections;
 
 public class ShowManager : MonoBehaviour
 {
-    private int currentSegmentIndex = 0;  // 當前橋段索引
-    private float currentSegmentTimer = 0f;
+    [Header("Runtime")]
+    public int currentSegmentIndex = 0;  // 當前橋段索引
+    public float currentSegmentTimer = 0f;
     private bool isShowRunning = false;
 
+    [Header("Show Settings")]
     public float atleastTotalTime = 150f;
     public float waitToNextTime = 40f;
     public float timeWhenSoundEnd = -1;
 
+    [Header("Control UI")]
+    public InputField INP_Segment;
 
     [Header("Debug UI")]
     [SerializeField] Text timeText;
@@ -30,6 +34,20 @@ public class ShowManager : MonoBehaviour
         }
 
         KRGameManager.instance.audioManager.OnSoundEnd += OnSoundEnd;
+
+        INP_Segment.onEndEdit.AddListener( x => {
+            if(int.TryParse(x, out int index)){
+                index = index - 1;
+                if(index >= 0 && index < segments.Count){
+                    currentSegmentIndex = index;
+                    currentSegmentTimer = 0f;
+                    timeWhenSoundEnd = 9999;
+                    UpdateUIInfo();
+                    segments[currentSegmentIndex].StartSegment();
+                }
+            }
+            INP_Segment.text = "";
+        });
 
         StartCoroutine(DelayedStart());
     }
