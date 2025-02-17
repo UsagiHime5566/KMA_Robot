@@ -145,7 +145,10 @@ public class ShowManager : MonoBehaviour
     private void OnSoundEnd()
     {
         KRGameManager.instance.animManager.animRobot = true;
-        
+
+        int nextFileIndex = (currentSegmentIndex + 1) % segments.Count;
+        KRGameManager.instance.uiManager.LoadSequenceImage(segments[nextFileIndex].loadFileName);
+
         timeWhenSoundEnd = currentSegmentTimer;
     }
 } 
