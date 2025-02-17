@@ -1605,7 +1605,7 @@ MonoBehaviour:
   waitToNextTime: 30
   timeWhenSoundEnd: -1
   waitTimeForRobotReset: 30
-  waitTimeParams: 1.3
+  waitTimeParams: 1.5
   INP_Segment: {fileID: 1683706901}
   timeText: {fileID: 1526511371}
   segmentIndexText: {fileID: 1838779647}
