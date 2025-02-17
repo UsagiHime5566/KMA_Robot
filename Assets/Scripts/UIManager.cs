@@ -82,13 +82,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void LoadSequenceShow(string _fileName){
+    public void LoadSequenceSound(string _fileName){
         INP_FileName.text = _fileName;
         resourceManager.LoadSound(_fileName);
         //執行完會有 Event Callback 在 KRGameManager 中
     }
 
-    public void LoadSequenceImage(){
+    public void LoadSequenceImage(string _fileName){
+        INP_FileName.text = _fileName;
         resourceManager.ClearPreviousResources();
         resourceManager.LoadImages(listOutputImage);
         if(listOutputImage[0].sprite && listOutputImage[1].sprite && listOutputImage[2].sprite && listOutputImage[3].sprite && listOutputImage[4].sprite)
