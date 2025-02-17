@@ -104,6 +104,7 @@ public class SignalSender : MonoBehaviour
             else
             {
                 Debug.Log($"請求發送成功 ({signal}): " + request.downloadHandler.text);
+                KRGameManager.instance.uiManager.AddLog($"請求發送成功 ({signal}): " + request.downloadHandler.text);
             }
         }
     }
@@ -134,6 +135,7 @@ public class SignalSender : MonoBehaviour
             else
             {
                 Debug.Log("Request sent successfully: " + url);
+                KRGameManager.instance.uiManager.AddLog("Request sent successfully: " + url);
             }
         }
     }

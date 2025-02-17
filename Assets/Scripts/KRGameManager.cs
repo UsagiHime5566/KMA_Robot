@@ -33,8 +33,12 @@ public class KRGameManager : HimeLib.SingletonMono<KRGameManager>
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            //Application.Quit();
         }
+    }
+
+    public void QuitApp(){
+        Application.Quit();
     }
 }
 
