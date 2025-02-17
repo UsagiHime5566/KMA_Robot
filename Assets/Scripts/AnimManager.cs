@@ -40,6 +40,9 @@ public class AnimManager : MonoBehaviour
             int randomTrigger = Random.Range(1, 11);
             animatorL.SetTrigger($"{randomTrigger}");
             animatorR.SetTrigger($"{randomTrigger}");
+
+            int segment = KRGameManager.instance.showManager.currentSegmentIndex;
+            Debug.Log($"Segment: {segment+1},Use Trigger: {randomTrigger} " + System.DateTime.Now.ToString("HH:mm:ss"));
         }
     }
 
