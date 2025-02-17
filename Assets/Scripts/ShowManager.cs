@@ -15,6 +15,7 @@ public class ShowManager : MonoBehaviour
     public float atleastTotalTime = 150f;
     public float waitToNextTime = 40f;
     public float timeWhenSoundEnd = -1;
+    public float waitTimeForRobotReset = 40;
 
     [Header("Control UI")]
     public InputField INP_Segment;
