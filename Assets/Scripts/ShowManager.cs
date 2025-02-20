@@ -20,6 +20,8 @@ public class ShowManager : MonoBehaviour
 
     [Header("Control UI")]
     public InputField INP_Segment;
+    public Button BTN_Start;
+
 
     [Header("Debug UI")]
     [SerializeField] Text timeText;
@@ -51,7 +53,19 @@ public class ShowManager : MonoBehaviour
             INP_Segment.text = "";
         });
 
-        StartCoroutine(DelayedStart());
+        BTN_Start.onClick.AddListener(() => {
+            Debug.Log("StartShow Manual");
+            StartShow();
+        });
+        TimeArrange.instance.OnTimeFlagChanged += (x, y) => {
+            Debug.Log($"TimeFlagChanged: {x.playMode} - {x.timeRange.startTimeString} - {x.timeRange.endTimeString}");
+            KRGameManager.instance.uiManager.AddLog($"TimeFlagChanged: {x.playMode} - {x.timeRange.startTimeString} - {x.timeRange.endTimeString}");
+            if(x.playMode == TimeArrange.PlayMode.OnlyGame){
+                StartShow();
+            }
+        };
+
+        //StartCoroutine(DelayedStart());
     }
 
     private IEnumerator DelayedStart()
@@ -102,6 +116,8 @@ public class ShowManager : MonoBehaviour
     [Button]
     public void StartShow()
     {
+        if(isShowRunning) return;
+
         isShowRunning = true;
         currentSegmentIndex = 0;
         currentSegmentTimer = 0f;
