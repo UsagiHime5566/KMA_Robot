@@ -435,7 +435,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u76F4\u63A5\u958B\u59CB"
+  m_Text: "\u7ACB\u5373\u5F9E\u982D\u958B\u59CB"
 --- !u!222 &75467082
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3410,7 +3410,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 44, y: 322}
-  m_SizeDelta: {x: 160, y: 60}
+  m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &673780439
 MonoBehaviour:
@@ -4100,6 +4100,7 @@ MonoBehaviour:
   enableSendSignal: 0
   index: 1
   sendSignalDelay: 5
+  angleThreshold: 1
   listRotationLimitHinge:
   - {fileID: 2077479324}
   - {fileID: 2128987973}
@@ -4138,6 +4139,7 @@ MonoBehaviour:
   enableSendSignal: 0
   index: 0
   sendSignalDelay: 5
+  angleThreshold: 1
   listRotationLimitHinge:
   - {fileID: 479747709}
   - {fileID: 610927318}

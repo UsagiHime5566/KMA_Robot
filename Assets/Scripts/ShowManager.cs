@@ -43,6 +43,7 @@ public class ShowManager : MonoBehaviour
             if(int.TryParse(x, out int index)){
                 index = index - 1;
                 if(index >= 0 && index < segments.Count){
+                    isShowRunning = true;
                     currentSegmentIndex = index;
                     currentSegmentTimer = 0f;
                     timeWhenSoundEnd = 9999;
@@ -135,7 +136,7 @@ public class ShowManager : MonoBehaviour
 
         if (currentSegmentIndex >= segments.Count)
         {
-            //currentSegmentIndex = 0;
+            currentSegmentIndex = 0;
             KRGameManager.instance.animManager.animRobot = false;
             EndShow();
             return;

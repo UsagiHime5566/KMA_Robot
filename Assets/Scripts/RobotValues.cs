@@ -8,10 +8,13 @@ public class RobotValues : MonoBehaviour
     public bool enableSendSignal;
     public int index;
     public float sendSignalDelay = 0.25f;
+    public float angleThreshold = 1;
     public List<RotationLimitHinge> listRotationLimitHinge;
     public List<int> listAxis;
 
     public System.Action<RobotAngles, int> OnSendSignal;
+
+    RobotAngles lastAngles;
 
     void Start()
     {
@@ -41,11 +44,21 @@ public class RobotValues : MonoBehaviour
             yield return new WaitForSeconds(sendSignalDelay);
             RobotAngles angles = new RobotAngles(); 
             angles.SetAngles(-listAxis[0], listAxis[1], listAxis[2], listAxis[3], listAxis[4], listAxis[5]);
+
+            if(lastAngles != null && CompareAngles(lastAngles, angles, angleThreshold)){
+                continue;
+            }
+
             if (enableSendSignal)   
             {
                 OnSendSignal?.Invoke(angles, index + 1);    //API從1開始
             }
+            lastAngles = angles;
         }
+    }
+
+    bool CompareAngles(RobotAngles angles1, RobotAngles angles2, float threshold){
+        return Mathf.Abs(angles1.J1 - angles2.J1) < threshold && Mathf.Abs(angles1.J2 - angles2.J2) < threshold && Mathf.Abs(angles1.J3 - angles2.J3) < threshold && Mathf.Abs(angles1.J4 - angles2.J4) < threshold && Mathf.Abs(angles1.J5 - angles2.J5) < threshold && Mathf.Abs(angles1.J6 - angles2.J6) < threshold;
     }
 }
 
