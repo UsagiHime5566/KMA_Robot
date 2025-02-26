@@ -135,7 +135,10 @@ public class ShowManager : MonoBehaviour
 
         if (currentSegmentIndex >= segments.Count)
         {
-            currentSegmentIndex = 0;
+            //currentSegmentIndex = 0;
+            KRGameManager.instance.animManager.animRobot = false;
+            EndShow();
+            return;
         }
 
         UpdateUIInfo();
