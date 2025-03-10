@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class SignalSender : MonoBehaviour
 {
     [Header("API")]
+    public string UrlHeader = "http://";
     public string BaseUrl = "kfma.iottalk.tw/api/v1";
     public string PaperAPI = "/epaper/{0}/image";
     public string RobotAPI = "/robot/{0}/angles";
@@ -46,7 +47,7 @@ public class SignalSender : MonoBehaviour
 
     void SendPaperSignal(byte[] imageData, string fileName, int paperId)
     {
-        string url = "https://" + BaseUrl + string.Format(PaperAPI, paperId);
+        string url = UrlHeader + BaseUrl + string.Format(PaperAPI, paperId);
         //Debug.Log(url);
         
         StartCoroutine(SendImageRequest(url, imageData, fileName));
@@ -78,7 +79,7 @@ public class SignalSender : MonoBehaviour
 
     public void SendPaperIntSignal(string signal, int paperId)
     {
-        string url = "https://" + BaseUrl + string.Format(PaperAPI, paperId);
+        string url = UrlHeader + BaseUrl + string.Format(PaperAPI, paperId);
         Debug.Log(url + $" ({signal})");
         StartCoroutine(SendIntRequest(url, signal));
     }
@@ -111,7 +112,7 @@ public class SignalSender : MonoBehaviour
 
     public void SendRobotSignal(RobotAngles angles, int robotId)
     {
-        string url = "https://" + BaseUrl + string.Format(RobotAPI, robotId);
+        string url = UrlHeader + BaseUrl + string.Format(RobotAPI, robotId);
         //Debug.Log(url);
         string json = JsonUtility.ToJson(angles);
         //Debug.Log(json);
