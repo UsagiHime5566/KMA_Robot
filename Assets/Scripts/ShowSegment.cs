@@ -28,6 +28,7 @@ public class ShowSegment
     {
         yield return new WaitForSeconds(waitTime);
         KRGameManager.instance.uiManager.LoadSequenceSound(loadFileName);
+        BGMManager.instance.FadeIn();
     }
 
     public void UpdateSegment(float currentTime)

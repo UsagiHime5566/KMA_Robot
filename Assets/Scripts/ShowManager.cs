@@ -159,6 +159,7 @@ public class ShowManager : MonoBehaviour
     private void EndShow()
     {
         isShowRunning = false;
+        BGMManager.instance.FadeOut();
         Debug.Log("演出結束！");
     }
 
