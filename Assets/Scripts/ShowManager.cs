@@ -125,6 +125,7 @@ public class ShowManager : MonoBehaviour
         timeWhenSoundEnd = 9999;
         UpdateUIInfo();
         segments[currentSegmentIndex].StartSegment();
+        KRGameManager.instance.uiManager.LoadSequenceImage("1");
     }
 
     private void NextSegment()
@@ -167,8 +168,12 @@ public class ShowManager : MonoBehaviour
     {
         KRGameManager.instance.animManager.animRobot = true;
 
-        int nextFileIndex = (currentSegmentIndex + 1) % segments.Count;
-        KRGameManager.instance.uiManager.LoadSequenceImage(segments[nextFileIndex].loadFileName);
+        int nextFileIndex = currentSegmentIndex + 1;
+        if(nextFileIndex >= segments.Count){
+            KRGameManager.instance.uiManager.LoadSequenceImage("13");
+        } else {
+            KRGameManager.instance.uiManager.LoadSequenceImage(segments[nextFileIndex].loadFileName);
+        }
 
         timeWhenSoundEnd = currentSegmentTimer;
     }
