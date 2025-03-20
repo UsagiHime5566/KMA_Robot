@@ -543,9 +543,6 @@ AnimatorStateMachine:
     m_State: {fileID: -1603485311784737165}
     m_Position: {x: 270, y: 420, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 8922796443933685077}
-    m_Position: {x: 670, y: 170, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 8567772083364840812}
     m_Position: {x: 270, y: 480, z: 0}
   - serializedVersion: 1
@@ -830,7 +827,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RoboticArm_R_Loop
+  m_Name: RoboticArm_R_Middle_Loop
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -843,7 +840,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3258eb07ba5dbbd4c9cf986acdd5fd03, type: 2}
+  m_Motion: {fileID: 7400000, guid: 19ed616be1eb21f46b904049ad0697cc, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -940,32 +937,6 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 9d93cd3c0453c36419cd49f56f6c47eb, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &8922796443933685077
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: RoboticArm_R_Loop 1
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3258eb07ba5dbbd4c9cf986acdd5fd03, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
