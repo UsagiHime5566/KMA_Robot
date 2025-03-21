@@ -38,6 +38,7 @@ public class ShowSegment
 
     public void EndSegment(float currentTime)
     {
+        KRGameManager.instance.animManager.IncreaseLoopIndex();
         Debug.Log($"結束第 {segmentIndex + 1} 個橋段於 {currentTime} 秒");
     }
 } 

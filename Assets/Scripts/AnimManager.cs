@@ -12,6 +12,9 @@ public class AnimManager : MonoBehaviour
     public RobotValues robotValuesB;
     public Text TXT_CurrentClipName;
 
+    int currentLoopIndex = 1;
+    int LoopIndexCount = 3;
+
     void Start()
     {
         StartAnimLoop();
@@ -49,9 +52,13 @@ public class AnimManager : MonoBehaviour
     void AnimStop(){
         if(!GetPlayingClipName(animatorL).Contains("Loop") || !GetPlayingClipName(animatorR).Contains("Loop"))
         {
-            animatorL.SetTrigger("0");
-            animatorR.SetTrigger("0");
+            animatorL.SetTrigger($"0{currentLoopIndex}");
+            animatorR.SetTrigger($"0{currentLoopIndex}");
         }
+    }
+
+    public void IncreaseLoopIndex(){
+        currentLoopIndex = (currentLoopIndex + 1) % LoopIndexCount;
     }
 
     public void BecomeManual(){
