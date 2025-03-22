@@ -17,6 +17,7 @@ public class ShowManager : MonoBehaviour
     public float timeWhenSoundEnd = -1;
     public float waitTimeForRobotReset = 40;
     public float waitTimeParams = 1.5f;
+    public string theEndImage = "13";
 
     [Header("Control UI")]
     public InputField INP_Segment;
@@ -170,7 +171,7 @@ public class ShowManager : MonoBehaviour
 
         int nextFileIndex = currentSegmentIndex + 1;
         if(nextFileIndex >= segments.Count){
-            KRGameManager.instance.uiManager.LoadSequenceImage("13");
+            KRGameManager.instance.uiManager.LoadSequenceImage(theEndImage);
         } else {
             KRGameManager.instance.uiManager.LoadSequenceImage(segments[nextFileIndex].loadFileName);
         }
