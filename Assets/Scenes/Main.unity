@@ -2892,6 +2892,7 @@ GameObject:
   - component: {fileID: 584109977}
   - component: {fileID: 584109976}
   - component: {fileID: 584109975}
+  - component: {fileID: 584109978}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3025,6 +3026,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd6287d61188ba468be8cacf2b7085c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &584109978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584109967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21078e40b105a1145a80eb8d83b0a72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  helpBox: "\u5728\u8F38\u51FA\u8CC7\u6599\u593E\u88E1\u5275\u4E00\u500Bdemo.txt\u6A94\u6848,
+    \u5C31\u53EF\u4EE5\u5207\u63DB\u5230Demo\u6A21\u5F0F."
+  demoFileName: demo.txt
+  resolutionDemo: {x: 960, y: 540}
+  resolutionRelease: {x: 1920, y: 1080}
 --- !u!1 &610927316
 GameObject:
   m_ObjectHideFlags: 0
@@ -9345,7 +9363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 136.80005, y: 272.37}
+  m_AnchoredPosition: {x: 136.7998, y: 272.37012}
   m_SizeDelta: {x: 100.6, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1683706901
