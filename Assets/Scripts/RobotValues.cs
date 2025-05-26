@@ -45,9 +45,9 @@ public class RobotValues : MonoBehaviour
             RobotAngles angles = new RobotAngles(); 
             angles.SetAngles(-listAxis[0], listAxis[1], listAxis[2], listAxis[3], listAxis[4], listAxis[5]);
 
-            if(lastAngles != null && CompareAngles(lastAngles, angles, angleThreshold)){
-                continue;
-            }
+            // if(lastAngles != null && CompareAngles(lastAngles, angles, angleThreshold)){
+            //     continue;
+            // }
 
             if (enableSendSignal)   
             {
