@@ -104,7 +104,7 @@ public class ShowManager : MonoBehaviour
     {
         if(segments.Count < 12){
             Debug.LogError("Segments count is less than 12");
-            return false;
+            //return false;
         }
 
         // 自動設置每個段落的 index
@@ -126,7 +126,7 @@ public class ShowManager : MonoBehaviour
         timeWhenSoundEnd = 9999;
         UpdateUIInfo();
         segments[currentSegmentIndex].StartSegment();
-        KRGameManager.instance.uiManager.LoadSequenceImage("1");
+        KRGameManager.instance.uiManager.LoadSequenceImage(theEndImage);
     }
 
     private void NextSegment()
