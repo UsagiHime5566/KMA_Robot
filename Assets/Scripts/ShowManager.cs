@@ -18,10 +18,12 @@ public class ShowManager : MonoBehaviour
     public float waitTimeForRobotReset = 40;
     public float waitTimeParams = 1.5f;
     public string theEndImage = "13";
+    public bool sendInitImageWhenStart = true;
 
     [Header("Control UI")]
     public InputField INP_Segment;
     public Button BTN_Start;
+    public Button BTN_SendInitImage;
 
 
     [Header("Debug UI")]
@@ -58,6 +60,11 @@ public class ShowManager : MonoBehaviour
         BTN_Start.onClick.AddListener(() => {
             Debug.Log("StartShow Manual");
             StartShow();
+        });
+        BTN_SendInitImage.onClick.AddListener(() => {
+            Debug.Log("SendInitImage");
+            KRGameManager.instance.uiManager.AddLog($"SendInitImage");
+            KRGameManager.instance.uiManager.LoadSequenceImage(theEndImage);
         });
         TimeArrange.instance.OnTimeFlagChanged += (x, y) => {
             Debug.Log($"TimeFlagChanged: {x.playMode} - {x.timeRange.startTimeString} - {x.timeRange.endTimeString}");
@@ -126,7 +133,9 @@ public class ShowManager : MonoBehaviour
         timeWhenSoundEnd = 9999;
         UpdateUIInfo();
         segments[currentSegmentIndex].StartSegment();
-        KRGameManager.instance.uiManager.LoadSequenceImage(theEndImage);
+        if(sendInitImageWhenStart){
+            KRGameManager.instance.uiManager.LoadSequenceImage(theEndImage);
+        }
     }
 
     private void NextSegment()
