@@ -18,7 +18,9 @@ public class ShowManager : MonoBehaviour
     public float waitTimeForRobotReset = 40;
     public float waitTimeParams = 1.5f;
     public string theEndImage = "13";
+    [Header("記者會相關")]
     public bool sendInitImageWhenStart = true;
+    public bool forceEndShowWhenBGMComplete = true;
 
     [Header("Control UI")]
     public InputField INP_Segment;
@@ -74,11 +76,13 @@ public class ShowManager : MonoBehaviour
             }
         };
 
-        BGMManager.instance.OnBGMComplete += () => {
-            Debug.Log("BGMComplete");
-            KRGameManager.instance.uiManager.AddLog($"BGMComplete");
-            ForceEndShow();
-        };
+        if(forceEndShowWhenBGMComplete){
+            BGMManager.instance.OnBGMComplete += () => {
+                Debug.Log("BGMComplete");
+                KRGameManager.instance.uiManager.AddLog($"BGMComplete");
+                ForceEndShow();
+            };
+        }
 
         //StartCoroutine(DelayedStart());
     }

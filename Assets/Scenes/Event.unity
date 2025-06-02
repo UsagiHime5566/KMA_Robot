@@ -1682,12 +1682,13 @@ MonoBehaviour:
   currentSegmentIndex: 0
   currentSegmentTimer: 0
   atleastTotalTime: 30
-  waitToNextTime: 35
+  waitToNextTime: 81
   timeWhenSoundEnd: -1
   waitTimeForRobotReset: 0
-  waitTimeParams: 1.5
+  waitTimeParams: 0.1
   theEndImage: 13
   sendInitImageWhenStart: 0
+  forceEndShowWhenBGMComplete: 1
   INP_Segment: {fileID: 1683706901}
   BTN_Start: {fileID: 673780439}
   BTN_SendInitImage: {fileID: 1265854639}
@@ -1696,7 +1697,7 @@ MonoBehaviour:
   fileNameText: {fileID: 1385804768}
   segments:
   - loadFileName: 13
-  - loadFileName: 2
+  - loadFileName: 5
 --- !u!1 &438715066
 GameObject:
   m_ObjectHideFlags: 0
@@ -4647,7 +4648,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

@@ -1688,6 +1688,7 @@ MonoBehaviour:
   waitTimeParams: 1.5
   theEndImage: 1
   sendInitImageWhenStart: 1
+  forceEndShowWhenBGMComplete: 0
   INP_Segment: {fileID: 1683706901}
   BTN_Start: {fileID: 673780439}
   BTN_SendInitImage: {fileID: 1953308458}
@@ -10996,7 +10997,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 44.000004, y: 403}
+  m_AnchoredPosition: {x: 44, y: 403}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1953308458
