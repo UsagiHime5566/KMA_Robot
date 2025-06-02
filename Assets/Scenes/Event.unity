@@ -4759,6 +4759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgm: {fileID: 911272128}
   fadeSpeed: 1
+  endTimeThreshold: 3
 --- !u!1 &912780017
 GameObject:
   m_ObjectHideFlags: 0

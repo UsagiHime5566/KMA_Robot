@@ -8,6 +8,7 @@ public class BGMManager : MonoBehaviour
     public static BGMManager instance;
     public AudioSource bgm;
     public float fadeSpeed = 1f;  // 淡入淡出的速度
+    public float endTimeThreshold = 1f;
     private float targetVolume = 1f;
     private bool isFading = false;
 
@@ -39,7 +40,7 @@ public class BGMManager : MonoBehaviour
     {
         while (true)
         {
-            if (bgm.isPlaying && !bgm.loop && bgm.time >= bgm.clip.length - 0.1f)
+            if (bgm.isPlaying && !bgm.loop && bgm.time >= bgm.clip.length - endTimeThreshold)
             {
                 OnBGMComplete?.Invoke();
                 yield break;
