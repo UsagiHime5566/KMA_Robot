@@ -74,6 +74,12 @@ public class ShowManager : MonoBehaviour
             }
         };
 
+        BGMManager.instance.OnBGMComplete += () => {
+            Debug.Log("BGMComplete");
+            KRGameManager.instance.uiManager.AddLog($"BGMComplete");
+            ForceEndShow();
+        };
+
         //StartCoroutine(DelayedStart());
     }
 
@@ -171,6 +177,18 @@ public class ShowManager : MonoBehaviour
     {
         isShowRunning = false;
         BGMManager.instance.FadeOut();
+        Debug.Log("演出結束！");
+    }
+
+    public void ForceEndShow(){
+        isShowRunning = false;
+        StopAllCoroutines();
+        segments[currentSegmentIndex].EndSegment(currentSegmentTimer);
+        currentSegmentIndex = 0;
+        currentSegmentTimer = 0f;
+        timeWhenSoundEnd = 9999;
+        UpdateUIInfo();
+        KRGameManager.instance.animManager.animRobot = false;
         Debug.Log("演出結束！");
     }
 
