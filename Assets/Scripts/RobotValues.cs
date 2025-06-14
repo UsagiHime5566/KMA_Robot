@@ -43,7 +43,8 @@ public class RobotValues : MonoBehaviour
         {
             yield return new WaitForSeconds(sendSignalDelay);
             RobotAngles angles = new RobotAngles(); 
-            angles.SetAngles(-listAxis[0], listAxis[1], listAxis[2], listAxis[3], listAxis[4], listAxis[5]);
+            int J6 = KRGameManager.instance.animManager.animRobot ? listAxis[5] : 0;
+            angles.SetAngles(-listAxis[0], listAxis[1], listAxis[2], listAxis[3], listAxis[4], J6);
 
             // if(lastAngles != null && CompareAngles(lastAngles, angles, angleThreshold)){
             //     continue;
