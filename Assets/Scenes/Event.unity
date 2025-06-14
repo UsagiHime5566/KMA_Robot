@@ -1686,7 +1686,7 @@ MonoBehaviour:
   timeWhenSoundEnd: -1
   waitTimeForRobotReset: 0
   waitTimeParams: 0.1
-  theEndImage: 13
+  theEndImage: 14
   sendInitImageWhenStart: 0
   forceEndShowWhenBGMComplete: 1
   INP_Segment: {fileID: 1683706901}
@@ -1696,7 +1696,7 @@ MonoBehaviour:
   segmentIndexText: {fileID: 1838779647}
   fileNameText: {fileID: 1385804768}
   segments:
-  - loadFileName: 13
+  - loadFileName: 14
   - loadFileName: 5
 --- !u!1 &438715066
 GameObject:
@@ -4644,7 +4644,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d1853ef8dc762794590719fe3c441f39, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 24f2646e5f8324e4ab215c4c73515da4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4759,7 +4759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgm: {fileID: 911272128}
   fadeSpeed: 1
-  endTimeThreshold: 3
+  endTimeThreshold: 15
 --- !u!1 &912780017
 GameObject:
   m_ObjectHideFlags: 0

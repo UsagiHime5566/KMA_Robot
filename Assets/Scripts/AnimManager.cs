@@ -11,8 +11,10 @@ public class AnimManager : MonoBehaviour
     public RobotValues robotValuesA;
     public RobotValues robotValuesB;
     public Text TXT_CurrentClipName;
+    public int forceTrigger = -1;
 
-    int currentLoopIndex = 1;
+    [Header("Runtime")]
+    [SerializeField] int currentLoopIndex = 1;
     int LoopIndexCount = 3;
 
     void Start()
@@ -40,7 +42,7 @@ public class AnimManager : MonoBehaviour
     void AnimRandom(){   
         if(GetPlayingClipName(animatorL).Contains("Loop") && GetPlayingClipName(animatorR).Contains("Loop"))
         {
-            int randomTrigger = Random.Range(1, 11);
+            int randomTrigger = forceTrigger > 0 ? forceTrigger : Random.Range(1, 11);
             animatorL.SetTrigger($"{randomTrigger}");
             animatorR.SetTrigger($"{randomTrigger}");
 
@@ -57,6 +59,7 @@ public class AnimManager : MonoBehaviour
         }
     }
 
+    [EasyButtons.Button]
     public void IncreaseLoopIndex(){
         currentLoopIndex = (currentLoopIndex + 1) % LoopIndexCount;
     }

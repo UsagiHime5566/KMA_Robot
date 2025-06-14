@@ -43,6 +43,8 @@ public class BGMManager : MonoBehaviour
             if (bgm.isPlaying && !bgm.loop && bgm.time >= bgm.clip.length - endTimeThreshold)
             {
                 OnBGMComplete?.Invoke();
+                Debug.Log("-- BGM Stop Event");
+                KRGameManager.instance.uiManager.AddLog("-- BGM Stop Event");
                 yield break;
             }
             yield return new WaitForSeconds(0.1f);

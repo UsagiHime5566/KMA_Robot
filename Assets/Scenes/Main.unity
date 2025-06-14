@@ -1686,7 +1686,7 @@ MonoBehaviour:
   timeWhenSoundEnd: -1
   waitTimeForRobotReset: 30
   waitTimeParams: 1.5
-  theEndImage: 1
+  theEndImage: 13
   sendInitImageWhenStart: 1
   forceEndShowWhenBGMComplete: 0
   INP_Segment: {fileID: 1683706901}
@@ -4769,6 +4769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgm: {fileID: 911272128}
   fadeSpeed: 1
+  endTimeThreshold: 1
 --- !u!1 &912780017
 GameObject:
   m_ObjectHideFlags: 0
