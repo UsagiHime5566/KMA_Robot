@@ -1687,7 +1687,8 @@ MonoBehaviour:
   waitTimeForRobotReset: 30
   waitTimeParams: 1.5
   theEndImage: 13
-  sendInitImageWhenStart: 1
+  sendFirstImageWhenStart: 1
+  sendInitImageWhenStart: 0
   forceEndShowWhenBGMComplete: 0
   INP_Segment: {fileID: 1683706901}
   BTN_Start: {fileID: 673780439}
@@ -9395,6 +9396,8 @@ MonoBehaviour:
   robotValuesA: {fileID: 769369990}
   robotValuesB: {fileID: 769369988}
   TXT_CurrentClipName: {fileID: 1640357514}
+  forceTrigger: -1
+  currentLoopIndex: 1
 --- !u!4 &1682453782
 Transform:
   m_ObjectHideFlags: 0

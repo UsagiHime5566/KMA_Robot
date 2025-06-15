@@ -19,6 +19,7 @@ public class ShowManager : MonoBehaviour
     public float waitTimeParams = 1.5f;
     public string theEndImage = "13";
     [Header("記者會相關")]
+    public bool sendFirstImageWhenStart = false;
     public bool sendInitImageWhenStart = true;
     public bool forceEndShowWhenBGMComplete = true;
 
@@ -145,6 +146,9 @@ public class ShowManager : MonoBehaviour
         segments[currentSegmentIndex].StartSegment();
         if(sendInitImageWhenStart){
             KRGameManager.instance.uiManager.LoadSequenceImage(theEndImage);
+        }
+        if(sendFirstImageWhenStart){
+            KRGameManager.instance.uiManager.LoadSequenceImage(segments[0].loadFileName);
         }
     }
 
